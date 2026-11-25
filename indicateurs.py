@@ -30,3 +30,12 @@ def ratio_rendement(cours_debut, cours_fin):
     return round(((cours_fin - cours_debut) / cours_debut) * 100, 2)
 
 
+def moyenne_mobile(valeurs, fenetre):
+    """Calculate the simple moving average over a sliding window."""
+    if fenetre <= 0 or len(valeurs) < fenetre:
+        return []
+
+    return [
+        round(sum(valeurs[i - fenetre + 1:i + 1]) / fenetre, 2)
+        for i in range(fenetre - 1, len(valeurs))
+    ]
