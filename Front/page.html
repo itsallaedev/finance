@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinData • Tableau de Bord Financier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="brand">
+            <h1>FinData Analytics</h1>
+            <p>Couche d'accès sécurisée & indicateurs financiers</p>
+        </div>
+
+        <!-- Icône Utilisateur Connecté -->
+        <button class="user-pill" onclick="toggleConnexion()" title="Cliquer pour simuler la connexion / déconnexion">
+            <div class="avatar-wrapper">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="online-dot" id="onlineDot"></span>
+            </div>
+            <div class="user-info">
+                <span class="user-name" id="userName">Allae (app_user)</span>
+                <span class="user-role" id="userStatus">● Connecté (Droits restreints)</span>
+            </div>
+        </button>
+    </header>
+
+    <!-- Sélection de la société -->
+    <div class="control-bar">
+        <div class="select-group">
+            <label for="selectSociete">Société :</label>
+            <select id="selectSociete" onchange="afficherResultats()">
+                <option value="0">TechNova SAS</option>
+                <option value="1">AgroVert SA</option>
+                <option value="2">MedCare Bio</option>
+                <option value="3">LogiTrans (Cas limite : CA = 0)</option>
+            </select>
+        </div>
+        <div class="company-meta" id="infosSociete"></div>
+    </div>
+
+    <!-- Les 5 Indicateurs -->
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-title">1. Marge nette</div>
+            <div id="marge" class="kpi-value">-</div>
+            <div class="kpi-formula">Résultat net / Chiffre d'affaires</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">2. Ratio de liquidité</div>
+            <div id="liquidite" class="kpi-value">-</div>
+            <div class="kpi-formula">Actifs courants / Passifs courants</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">3. Taux d'endettement</div>
+            <div id="endettement" class="kpi-value">-</div>
+            <div class="kpi-formula">Dettes totales / Capitaux propres</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">4. Rendement (10 jours)</div>
+            <div id="rendement" class="kpi-value">-</div>
+            <div class="kpi-formula">Variation entre le 1er et le 10e cours</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">5. Moyenne mobile (5j)</div>
+            <div id="moyenneMobile" class="kpi-value">-</div>
+            <div class="kpi-formula">Moyenne glissante des 5 derniers cours</div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
